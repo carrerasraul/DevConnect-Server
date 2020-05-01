@@ -12,7 +12,7 @@ Visit the live site here: https://dev-connect-client.now.sh/
 - MongoDB
 
 ---
-##Screenshots
+## Screenshots
 
 ### Landing
 ![Landing Page](screenshots/Landing.png)
