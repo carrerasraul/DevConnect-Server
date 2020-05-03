@@ -1,15 +1,16 @@
-# DevConnector - Front End
-This is a social media platform for developers to network together.
+# DevConnector - Back End
+Server side of React DevConnector Client. Contains functions to enable CRUD operations for client side application.
 
 Visit the live site here: https://dev-connect-client.now.sh/
 
 ---
 
 ## Technologies Used
-- React.js
-- Node.js
-- Postgresql
-- MongoDB
+- Node
+- Express Framework
+- Passport Authentification
+- Jwt Security
+- Helmet
 
 ---
 ## Screenshots
