@@ -225,6 +225,94 @@ api/auth
         } = req.body;
 ```
 
+## Posts
+
+POST
+```
+@route   POST api/posts
+@desc    Create a post
+@access  Private
+
+newPost = new Post({
+            text: req.body.text,
+            name: user.name,
+            avatar: user.avatar,
+            user: req.user.id
+        })
+```
+GET
+```
+@route   GET api/posts
+@desc    Get all posts
+@access  Private
+
+posts = await Post.find().sort({
+            date: -1
+        });
+```
+GET
+```
+@route   GET api/posts/:id
+@desc    Get post by id
+@access  Private
+
+post = await Post.findById(req.params.id)
+```
+DELETE
+```
+@route   DELETE api/posts/;id
+@desc    Delete a post
+@access  Private
+
+post = await Post.findById(req.params.id)
+        await post.remove();
+
+```
+PUT
+```
+@route   PUT api/posts/like/:id
+@desc    Like a post
+@access  Private
+
+        post.likes.unshift({
+            user: req.user.id
+        });
+
+        await post.save()
+```
+PUT
+```
+@route   PUT api/posts/unlike/:id
+@desc    Unlike a post
+@access  Private
+
+        post.likes.splice(removeIndex, 1)
+
+        await post.save()
+```
+POST
+```
+@route   POST api/posts/comment/:id
+@desc    Comment on a post
+@access  Private
+
+        const newComment = {
+            text: req.body.text,
+            name: user.name,
+            avatar: user.avatar,
+            user: req.user.id
+        };
+```
+DELETE
+```
+@route   DELETE api/posts/comment/:id/:comment_id
+@desc    Delete comment
+@access  Private
+
+        post.comments.splice(removeIndex, 1)
+
+        await post.save()
+```
 
 ---
 ## Screenshots
