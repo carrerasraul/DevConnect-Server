@@ -205,6 +205,26 @@ Allows user to make posts as well as comment and like them
     }
 
 ```
+---
+
+## API Overview
+
+## Auth
+
+GET
+```
+api/auth
+```
+POST
+```
+api/auth
+
+        const {
+            email,
+            password
+        } = req.body;
+```
+
 
 ---
 ## Screenshots
