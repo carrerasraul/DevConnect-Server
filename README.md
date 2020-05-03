@@ -19,7 +19,7 @@ Visit the live site here: https://dev-connect-client.now.sh/
 Users
 
 ```    
-name: {
+    name: {
         type: String,
         required: true
     },
