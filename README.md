@@ -13,6 +13,34 @@ Visit the live site here: https://dev-connect-client.now.sh/
 - Helmet
 
 ---
+
+## Functionality
+
+Users
+
+`    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        // Makes it so you can't use the same email
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    avatar: {
+        type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }`
+
+---
 ## Screenshots
 
 ### Landing
