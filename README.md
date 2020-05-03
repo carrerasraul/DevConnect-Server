@@ -18,14 +18,14 @@ Visit the live site here: https://dev-connect-client.now.sh/
 
 Users
 
-`    name: {
+```    
+name: {
         type: String,
         required: true
     },
     email: {
         type: String,
         required: true,
-        // Makes it so you can't use the same email
         unique: true
     },
     password: {
@@ -38,7 +38,8 @@ Users
     date: {
         type: Date,
         default: Date.now
-    }`
+    }
+```
 
 ---
 ## Screenshots
