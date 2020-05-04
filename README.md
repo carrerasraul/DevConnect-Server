@@ -314,6 +314,159 @@ DELETE
         await post.save()
 ```
 
+## Profile
+
+GET
+```
+@route   GET api/profile/me
+@desc    Get current users profile
+@access  Private
+
+profile = await Profile.findOne({
+            user: req.user.id
+        }).populate('user',
+            ['name', 'avatar'])
+```
+POST
+```
+@route   POST api/profile
+@desc    Create or update a user profile
+@access  Private
+
+const {
+            company,
+            website,
+            location,
+            bio,
+            status,
+            githubusername,
+            skills,
+            youtube,
+            facebook,
+            twitter,
+            instagram,
+            linkedin
+        } = req.body;
+        
+        // Build profile object
+        const profileFields = {};
+        profileFields.user = req.user.id;
+        if (company) profileFields.company = company;
+        if (website) profileFields.website = website;
+        if (location) profileFields.location = location;
+        if (bio) profileFields.bio = bio;
+        if (status) profileFields.status = status;
+        if (githubusername) profileFields.githubusername = githubusername;
+        if (skills) {
+            profileFields.skills = skills.split(',').map(skill => skill.trim());
+        }
+
+        // Build Social object
+        profileFields.social = {}
+        if (youtube) profileFields.social.youtube = youtube;
+        if (twitter) profileFields.social.twitter = twitter;
+        if (facebook) profileFields.social.facebook = facebook;
+        if (linkedin) profileFields.social.linkedin = linkedin;
+        if (instagram) profileFields.social.instagram = instagram;
+```
+GET
+```
+@route   GET api/profile
+@desc    Get all profiles
+@access  Public
+
+profile = await Profile.findOne({
+            user: req.params.user_id
+        }).populate('user', ['name', 'avatar'])
+```
+DELETE
+```
+@route   DELETE api/profile
+@desc    Delete profile, user & posts
+@access  Private
+
+        // Remove users posts
+        await Post.deleteMany({
+            user: req.user.id
+        })
+
+        // Remove profile
+        await Profile.findOneAndRemove({
+            user: req.user.id
+        });
+
+        // Remove user
+        await User.findOneAndRemove({
+            _id: req.user.id
+        });
+```
+PUT
+```
+@route   api/profile/experience
+@desc    Add profile experience
+@access  Private
+
+    const {
+        title,
+        company,
+        location,
+        from,
+        to,
+        current,
+        description
+    } = req.body;
+```
+DELETE
+```
+        const removeIndex = profile.experience.map(item => item.id).indexOf(req.params.exp_id);
+```
+PUT
+```
+@route   PUT api/profile/education
+@desc    Add profile education
+@access  Private
+
+    const {
+        school,
+        degree,
+        fieldOfStudy,
+        from,
+        to,
+        current,
+        description
+    } = req.body;
+```
+DELETE
+```
+@route   DELETE api/profile/education/:edu_id
+@desc    Delete education from profile
+@access  Private
+
+        const removeIndex = profile.education.map(item => item.id).indexOf(req.params.edu_id);
+```
+GET
+```
+@route   GET api/profile/github/:username
+@desc    Get user repos from github
+@access  Public
+```
+
+## Profile
+
+POST
+```
+@route   POST api/users
+@desc    Register user
+@access  Public
+
+        const {
+            name,
+            email,
+            password
+        } = req.body;
+```
+
+
 ---
 ## Screenshots
 
