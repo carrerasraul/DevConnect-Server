@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "test": "mocha"
   },
   "author": "Raul Carreras",
   "license": "ISC",
@@ -21,7 +22,9 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "concurrently": "^5.1.0",
+    "mocha": "^7.1.2",
     "nodemon": "^2.0.3"
   }
 }
