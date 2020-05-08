@@ -1,14 +1,10 @@
-const chai = require('chai');
-const jwt = require('jsonwebtoken');
-const express = require('express');
-const router = express.Router();
-
-const auth = require('../routes/api/auth');
-const User = require('../models/User');
+const supertest = require('supertest');
+const server = require('../server');
+const { expect } = require('chai');
 
 describe('GET api/auth', function () {
   it('responds with json', function (done) {
-    request(User)
+    return supertest(app)
       .get('api/auth')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
@@ -17,8 +13,8 @@ describe('GET api/auth', function () {
 });
 
 describe('POST api/auth', function () {
-  it('responds with json', function (done) {
-    request(User)
+  it('responds with json', function () {
+    request(user)
       .get('api/auth')
       .auth('email', 'password')
       .set('Accept', 'application/json')
