@@ -12,13 +12,13 @@ describe('GET api/auth', function () {
   });
 });
 
-describe('POST api/auth', function () {
-  it('responds with json', function () {
-    request(user)
-      .get('api/auth')
-      .auth('email', 'password')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(400);
-  });
-});
+// describe('POST api/auth', function () {
+//   it('responds with json', function () {
+//     request(user)
+//       .get('api/auth')
+//       .auth('email', 'password')
+//       .set('Accept', 'application/json')
+//       .expect('Content-Type', /json/)
+//       .expect(400);
+//   });
+// });
