@@ -1,11 +1,11 @@
 const supertest = require('supertest');
-const server = require('../server');
+const app = require('../server');
 const { expect } = require('chai');
 
-describe('GET api/auth', function () {
+describe('GET /api/auth', function () {
   it('responds with json', function (done) {
     return supertest(app)
-      .get('api/auth')
+      .get('/api/auth')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(500, done);
